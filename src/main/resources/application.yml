@@ -1,0 +1,24 @@
+
+#server 配置
+server:
+  port: 8080
+spring:
+#  main:
+#    allow-bean-definition-overriding: true
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/postgres
+    password: renwei399
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+devtools:
+  restart:
+    enabled: 'true'
+mybatis:
+  type-aliases-package: com.test.entity
