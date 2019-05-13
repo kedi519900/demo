@@ -278,7 +278,7 @@ public class GoodsService {
         all.stream().forEach(tradingInfo -> {
             TradingInfoRes goodsRes = new TradingInfoRes();
             goodsRes.setId(tradingInfo.getId());
-            GoodsType goodsType = goodsTypeMap.get(tradingInfo.getTypeId().toString());
+            GoodsType goodsType = goodsTypeMap.get(tradingInfo.getTypeId());
             goodsRes.setGoodsType(goodsType);
             goodsRes.setType(tradingInfo.getType());
             Companys companys = companyMap.get(tradingInfo.getCompanyId().toString());
