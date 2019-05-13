@@ -35,7 +35,7 @@ public class WebSocket {
         user.add(this);
         for (WebSocket myWebSocket : user) {
             System.out.println(session);
-            myWebSocket.session.getBasicRemote().sendText("当前登录人数"+user.size()+"人");
+//            myWebSocket.session.getBasicRemote().sendText("当前登录人数"+user.size()+"人");
             //myWebSocket.session.getBasicRemote().sendText("<img src=''/>");
         }
     }
