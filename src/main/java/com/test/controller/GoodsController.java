@@ -117,6 +117,7 @@ public class GoodsController {
         return goodsService.submit(goodsReq);
     }
 
+    @LoginRequired
     @GetMapping(value = {"/export/{id}"})
     public void orderList(@PathVariable String id, HttpServletResponse response) throws Exception {
         goodsService.export(id,response);

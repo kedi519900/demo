@@ -26,14 +26,15 @@ public class UserOrLoginController {
 
     @Autowired
     private SettingService settingService;
-
+    @LoginRequired
     @PostMapping(value = "/login")
     public LoginResVM login(@RequestBody Login login) throws Exception {
         LoginResVM loginResVM = userOrLoginService.login(login);
         return loginResVM;
     }
 
-
+    @LoginRequired
+    @AdminRequired
     @PostMapping(value = "/getUsers")
     public List<LoginVM> getUsers(@RequestBody UserReq userReq) throws Exception {
         List<LoginVM> logins = userOrLoginService.getUsers(userReq);
@@ -61,12 +62,14 @@ public class UserOrLoginController {
     }
     @PutMapping(value = "/User")
     @LoginRequired
+    @AdminRequired
     public Login updateUser(@RequestBody UserVm userVm){
         return userOrLoginService.updateUser(userVm);
     }
 
     @DeleteMapping(value = "/User")
     @LoginRequired
+    @AdminRequired
     public String deleteUser(@RequestBody UserVm userVm) throws Exception {
         return userOrLoginService.deleteUser(userVm);
     }
