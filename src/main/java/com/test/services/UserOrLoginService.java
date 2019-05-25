@@ -58,6 +58,7 @@ public class UserOrLoginService {
         String s = tokenUtils.createJwtToken(userName);
         loginResVM.setName(user.getName());
         loginResVM.setToken(s);
+        loginResVM.setStaffId(user.getId());
         webSocket.onMessage("用户" + user.getName() + "登录系统", null);
         utils.put(userName, JSON.toJSONString(user));
         utils.putToken(userName, s);

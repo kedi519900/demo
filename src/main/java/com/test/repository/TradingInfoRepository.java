@@ -1,10 +1,10 @@
 package com.test.repository;
 
 import com.test.entity.TradingInfo;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
@@ -19,5 +19,5 @@ public interface TradingInfoRepository extends JpaRepository<TradingInfo, UUID>,
     @Query(nativeQuery = true,
             value="SELECT * FROM trading_info where goods_id in :collect and type = 'REPLENISH' and date >= :startDate and date <= :endDate"
     )
-    List<TradingInfo> findTradingInfo(@Param("collect") Set<UUID> collect, @Param("startDate")LocalDateTime startDate,@Param("endDate") LocalDateTime endDate);
+    List<TradingInfo> findTradingInfo(@Param("collect") Set<UUID> collect, @Param("startDate")LocalDateTime startDate, @Param("endDate") LocalDateTime endDate);
 }

@@ -26,7 +26,6 @@ public class UserOrLoginController {
 
     @Autowired
     private SettingService settingService;
-    @LoginRequired
     @PostMapping(value = "/login")
     public LoginResVM login(@RequestBody Login login) throws Exception {
         LoginResVM loginResVM = userOrLoginService.login(login);
