@@ -33,9 +33,8 @@ public class UserOrLoginController {
     }
 
     @LoginRequired
-    @AdminRequired
     @PostMapping(value = "/getUsers")
-    public List<LoginVM> getUsers(@RequestBody UserReq userReq) throws Exception {
+    public List<LoginVM> getUsers(@RequestBody UserReq userReq) {
         List<LoginVM> logins = userOrLoginService.getUsers(userReq);
         return logins;
     }
@@ -72,19 +71,14 @@ public class UserOrLoginController {
     public String deleteUser(@RequestBody UserVm userVm) throws Exception {
         return userOrLoginService.deleteUser(userVm);
     }
-
-
-
     @GetMapping(value = "/getPermissions")
     @LoginRequired
-    @AdminRequired
     public List<Permission> getPermissions(){
         return userOrLoginService.getPermissions();
     }
 
     @GetMapping(value = {"/getRole/{id}","/getRole"})
     @LoginRequired
-    @AdminRequired
     public List<RoleRes> getRole(@PathVariable(required = false) String id){
         List<RoleRes> role = userOrLoginService.getRole(id);
         return role;
@@ -100,7 +94,6 @@ public class UserOrLoginController {
 
     @GetMapping(value = "/getUser/{id}")
     @LoginRequired
-    @AdminRequired
     public UserRes getUser(@PathVariable String id){
         Utils.requireNonNull(id,"用户id不能为空!!");
         return userOrLoginService.getUser(id);
